@@ -1,0 +1,197 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+            background-image: url('bg2.jpg');
+            background-attachment: fixed;
+            background-size: 100%;
+        }
+        h2{
+            color: rgba(255, 255, 255, 0.8);
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: rgba(18, 60, 160, 0.2);
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .navbar-inverse{
+            background-image: linear-gradient(to bottom, #020c32 0, #040822 100%);
+        }
+        .navbar-brand{
+            color: #EEE !important;
+        }
+        .desc {
+            width: 220px;
+            height: 342px;
+	    opacity: 0;
+	    overflow: hidden;
+            position: absolute;
+            left: 80px;
+            background: black;
+            -webkit-transition: all 1s ease;
+            transition:all 1s ease;
+            color:#FFFFFF;
+            padding: 10px;
+        }
+	.desc:hover {
+	    opacity:0.8;
+   
+        }
+	@media (max-width:1200px){
+	    .desc {
+		left: 125px;
+	    }
+	}
+	@media (max-width:992px){
+	    .desc {
+		left: 252px;
+	    }
+	}
+      
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">My Favourite Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JcpWXaA2qeg" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>Woody (Tom Hanks), a good-hearted cowboy doll who belongs to a young boy named Andy (John Morris), sees his position as Andy's favorite toy jeopardized when his parents buy him a Buzz Lightyear (Tim Allen) action figure. Even worse, the arrogant Buzz thinks he's a real spaceman on a mission to return to his home planet.
+	</div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Toy_Story.jpg/220px-Toy_Story.jpg" width="220" height="342">
+    <h2>Toy Story</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5PSNL1qE6VY" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>On the lush alien world of Pandora live the Na'vi, beings who appear primitive but are highly evolved. Because the planet's environment is poisonous, human/N'vi hybrids, called Avatars, must link to human minds to allow for free movement on Pandora.
+	</div>
+    <img src="http://www.impawards.com/2009/posters/avatar_xlg.jpg" width="220" height="342">
+    <h2>Avatar</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="G59cD1NSbS8" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>This dark action film, based on the comic book series, follows FBI agent Frank Castle (Thomas Jane) as he transforms into the vengeful Punisher after criminals murder his family, including his wife and son.
+	</div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Punisher_ver2.jpg/220px-Punisher_ver2.jpg" width="220" height="342">
+    <h2>The Punisher</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KFu_26DrLE4" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>Marlin (Albert Brooks), a clown fish, is overly cautious with his son, Nemo (Alexander Gould), who has a foreshortened fin. When Nemo swims too close to the surface to prove himself, he is caught by a diver, and horrified Marlin must set out to find him.
+	</div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Finding_Nemo.jpg/220px-Finding_Nemo.jpg" width="220" height="342">
+    <h2>Finding Nemo</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="sUkZFetWYY0" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>A man who delights in all things wicked, supervillain Gru (Steve Carell) hatches a plan to steal the moon. Surrounded by an army of little yellow minions and his impenetrable arsenal of weapons and war machines, Gru makes ready to vanquish all who stand in his way.
+	</div>
+    <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcStk75A_FacVc2kXVb8vdTAU6x-fmRjV2X0-6yxHF5iksQmzKwB" width="220" height="342">
+    <h2>Despicable Me</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="BE77igZczlI" data-toggle="modal" data-target="#trailer">
+    <div class="desc">
+        Storyline<br/><br/>When Verne (Garry Shandling) and fellow woodland friends awake from winter's hibernation, they find they have some new neighbors: humans, and RJ (Bruce Willis), an opportunistic raccoon who shows the others how to exploit the suburban bounty laid out before them.
+	</div>
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/159725/p159725_p_v8_aa.jpg" width="220" height="342">
+    <h2>Over the Hedge</h2>
+</div>
+
+    </div>
+  </body>
+</html>
